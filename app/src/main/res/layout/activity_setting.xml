@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/player1_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Player 1 Name"
+        android:textSize="18sp"
+        android:padding="16dp"/>
+
+    <EditText
+        android:id="@+id/player2_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player1_edittext"
+        android:hint="Player 2 Name"
+        android:textSize="18sp"
+        android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player2_edittext"
+        android:text="Save"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

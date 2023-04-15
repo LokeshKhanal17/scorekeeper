@@ -1,33 +1,33 @@
 package ca.lokendra.scorekeeper
 
-
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Switch
-import android.widget.TextView
-import android.widget.Toast
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
-import android.widget.ToggleButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     private var scoreTeamA = 0
     private var scoreTeamB = 0
     private lateinit var player1Switch: Switch
     private lateinit var player2Switch: Switch
-
     private lateinit var scoreTextView1: TextView
     private lateinit var scoreTextView2: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val increase = findViewById<Button>(R.id.button1)
         val decrease = findViewById<Button>(R.id.button2)
         player1Switch = findViewById(R.id.player1_switch)
         player2Switch = findViewById(R.id.player2_switch)
         scoreTextView1 = findViewById(R.id.scoreTeamA)
         scoreTextView2 = findViewById(R.id.scoreTeamB)
+
         val toggleButton = findViewById<ToggleButton>(R.id.toggleButton)
         toggleButton.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity() {
             }
             recreate()
         }
-
-
 
         player1Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -71,6 +69,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_about -> {
+                val message = "This app was created by [Your Name]."
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+                return true
+            }
+            R.id.menu_settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun increaseScore(team: String) {
         if (team == "A") {
             scoreTeamA++
@@ -96,7 +115,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun decreaseScore(team: String) {
         if (team == "A") {
             scoreTeamA--
@@ -117,5 +135,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-
