@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_about -> {
-                val message = "This app was created by [Your Name]."
+                val message = "This app was created by Lokendra Khanal,Gorge , and Manish. We worked as team For CPIN."
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show()
                 return true
             }
